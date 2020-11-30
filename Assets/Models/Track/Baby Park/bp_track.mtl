@@ -1,0 +1,217 @@
+# Blender MTL File: 'bp_track.blend'
+# Material Count: 18
+
+newmtl bb_ami_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_ami_kanaami.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_ami_kanaami.tga
+
+newmtl bb_asi_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_asi.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_asi.tga
+
+newmtl bb_haikei_miti_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_haikei_miti.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_haikei_miti.tga
+
+newmtl bb_haikei_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_haikei.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_haikei.tga
+
+newmtl bb_kanban2_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_kanban0710.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_kanban0710.tga
+
+newmtl bb_kanban_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_kanban0905.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_kanban0905.tga
+
+newmtl bb_kusabana_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_kusabanapaint.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_kusabanapaint.tga
+
+newmtl bb_merry_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_merry.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_merry.tga
+
+newmtl bb_milk_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_milk.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_milk.tga
+
+newmtl bb_rainbow_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_rainbow.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_rainbow.tga
+
+newmtl bb_reru_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_reru.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_reru.tga
+
+newmtl bb_sc_pata_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_sc_patahane.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_sc_patahane.tga
+
+newmtl bb_siro_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_siro.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_siro.tga
+
+newmtl bb_tuti_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_juutan_new_blue2.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_juutan_new_blue2.tga
+
+newmtl collision
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Collision\col.png
+
+newmtl net_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\kabe2.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\kabe2.tga
+
+newmtl outfield_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_iro_0808.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_iro_0808.tga
+
+newmtl road_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_juutan_new2.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_course_bmd\\Textures\\bb_juutan_new2.tga

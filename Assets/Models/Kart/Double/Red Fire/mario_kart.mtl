@@ -1,0 +1,62 @@
+# Blender MTL File: 'None'
+# Material Count: 5
+
+newmtl mario_arm_tx
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_arm_bmd\\Textures\\mario_arm.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_arm_bmd\\Textures\\mario_arm.tga
+
+newmtl mario_car_tx
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_body_bmd\\Textures\\mario_car.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_body_bmd\\Textures\\mario_car.tga
+
+newmtl mario_shock_tx
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_shock_bmd\\Textures\\mario_shock.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_shock_bmd\\Textures\\mario_shock.tga
+
+newmtl mario_tire_tx
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_tire_l_bmd\\Textures\\mario_tire.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_tire_l_bmd\\Textures\\mario_tire.tga
+
+newmtl mario_tire_tx.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_tire_r_bmd\\Textures\\mario_tire.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\MRAM.arc_dir\\mram\\kart\\mario_all\\mario_k_tire_r_bmd\\Textures\\mario_tire.tga

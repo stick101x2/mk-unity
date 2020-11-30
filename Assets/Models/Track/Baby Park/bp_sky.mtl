@@ -1,0 +1,14 @@
+# Blender MTL File: 'bp_track.blend'
+# Material Count: 1
+
+newmtl sky_tx_v
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_sky_bmd\\Textures\\bb_sky.tga
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\dolphin\\Mario Kart - Double Dash!! (USA)\\Mario Kart - Double Dash!! (USA) EX\\Course\\BabyLuigi.arc_dir\\babyluigi\\babyluigi_sky_bmd\\Textures\\bb_sky.tga
