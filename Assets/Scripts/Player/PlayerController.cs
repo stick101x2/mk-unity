@@ -12,7 +12,14 @@ public class PlayerController : MonoBehaviour, IPlayer
     Player_Variables v;
     //vars
     Transform pivot;
-    //
+    //private
+    
+    public float steerM; // NOW
+    public float steerC; // CURRENT
+    public float steerMod = 10;
+    public float debug_sAmt;
+    //p
+    float steerAmount = 0;
     // Start is called before the first frame update
     public void Setup(Player p)
     {
@@ -34,7 +41,7 @@ public class PlayerController : MonoBehaviour, IPlayer
     // Update is called once per frame
     public void P_Update()
     {
-
+        
     }
     public void P_FixedUpdate()
     {
@@ -45,17 +52,17 @@ public class PlayerController : MonoBehaviour, IPlayer
     {
         if(input.accelHeld &&!input.dccelHeld)
         {
-            move.Move(ref v.c_speed,v.c_max_speed,1f);
+            move.Move(ref v.c_speed,v.c_max_speed - (steerC * p.main.f_handling), 1f);
         }
         else if(input.dccelHeld && !input.accelHeld)
         {
-            move.Move(ref v.c_speed, -v.c_max_speed * 0.675f,2f);
+            move.Move(ref v.c_speed, -(v.c_max_speed * 0.675f - (steerC * p.main.f_handling)),2f);
         }else 
         {
             if (input.accelHeld && input.dccelHeld)
                 move.Move(ref v.c_speed, 0, 4f);
             else
-                move.Move(ref v.c_speed, 0, 3f);
+                move.Move(ref v.c_speed, 0, 1.5f);
         }
     }
     void Tires()
@@ -71,7 +78,7 @@ public class PlayerController : MonoBehaviour, IPlayer
     {
         v.steerDirection = input.x;
 
-        float steerAmount = 0;
+        
 
         if(v.isDrifting)
         {
@@ -88,13 +95,35 @@ public class PlayerController : MonoBehaviour, IPlayer
             pivot.localRotation = Quaternion.Lerp(pivot.localRotation, Quaternion.Euler(0,  0, 0), v.turnSpeed * Time.deltaTime);
         }
         float turnSpeedModifier = Mathf.Abs(v.real_speed) / v.c_max_speed + 1f;
-       // Debug.Log(turnSpeedModifier);
-        steerAmount = v.real_speed / turnSpeedModifier * v.steerDirection;
+        // Debug.Log(turnSpeedModifier);
+       
 
-        steerDirVector = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + steerAmount, transform.eulerAngles.z);
+        steerAmount = input.accelHeld && input.dccelHeld && Mathf.Abs(v.c_speed) < 0.1f ? v.c_max_speed * v.steerDirection : v.real_speed / turnSpeedModifier * v.steerDirection;
+
+         steerM = Mathf.Abs(steerAmount) < 0.1f ? 0 : Mathf.Sign(steerAmount);
+
+
+
+        steerC =Mathf.Lerp(steerC, steerAmount, Time.deltaTime * steerMod);
+        
+
+        steerDirVector = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + steerC, transform.eulerAngles.z);
 
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, steerDirVector, v.turnSpeed * 0.5f * Time.deltaTime);
+        //   Dev.Log("SAmt: " + steerAmount);
+       debug_sAmt = steerAmount;
+       // debug_sDVect = steerDirVector;
     }
+
+    void Drift()
+    {
+        if (input.driftDown)
+        {
+
+            input.driftDown = false;
+        }
+    }
+
     Transform backleft;
     Transform backright;
     Transform frontleft;
@@ -107,7 +136,7 @@ public class PlayerController : MonoBehaviour, IPlayer
 
     Vector3 upDir;
     Vector3 newUp;
-    void GroundNormalRotation()
+    void FourPointNormalRotation()
     {  
         RaycastHit hit;
         Debug.DrawRay(transform.position + Vector3.up * 0.5f, -transform.up);
@@ -145,7 +174,17 @@ public class PlayerController : MonoBehaviour, IPlayer
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up * 2, newUp) * transform.rotation, v.groundNormalRotateSpeed * Time.deltaTime);
     }
-
+    void GroundNormalRotation()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up *0.1f, -transform.up , out hit, 0.75f, v.terrian))
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up * 2, hit.normal) * transform.rotation, 7.5f * Time.deltaTime);
+            v.isGrounded = true;
+        }
+        else
+            v.isGrounded = false;
+    }
     // ===== States ====== 
 
 

@@ -23,8 +23,8 @@ public class Player_Variables : MonoBehaviour,IPlayer
     public LayerMask terrian;
     public bool isGrounded;
     public float groundNormalRotateSpeed = 7.5f;
-    
-    
+    [Header("Boost")]
+    public float boostTimer;
 
 
 

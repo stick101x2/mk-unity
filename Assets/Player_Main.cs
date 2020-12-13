@@ -19,6 +19,9 @@ public class Player_Main : MonoBehaviour
     public float turnAngleOffset = 45f;
 
     public float speedModifier = 1;
+    public float maxSpeed = 100;
+
+   
 
     public void GetFinalStats()
     {
@@ -41,6 +44,11 @@ public class Player_Main : MonoBehaviour
             f_drift = (c_kart.data.stat.drift + (driver_a.data.bonusStat.drift)) / 100f + 0.5f;
             f_offroad = (c_kart.data.stat.offroad + (driver_a.data.bonusStat.offroad)) / 100f + 0.5f;
         }
+
+        //Handling
+        float p_handling = f_handling;
+        f_handling = Func.Remap(p_handling, 0.5f, 1.5f, 1, 0);
+
     }
 
     public void WheelsSteer(float dir)
@@ -72,7 +80,14 @@ public class Player_Main : MonoBehaviour
     }
     public void WheelsMove(float speed)
     {
-        float turnSpeed = -90 * Time.deltaTime * speed * speedModifier;
+        float c = speed;
+        if(c > 0)
+            c = Mathf.Min(speed, maxSpeed);
+        else if (c < 0)
+            c = Mathf.Max(speed, -maxSpeed);
+        //c *= -1;
+
+        float turnSpeed = -90 * Time.deltaTime * c * speedModifier;
 
         c_kart.wheel_back_L.Rotate(new Vector3(0, 0, turnSpeed));
         c_kart.wheel_back_R.Rotate(new Vector3(0, 0, turnSpeed));
