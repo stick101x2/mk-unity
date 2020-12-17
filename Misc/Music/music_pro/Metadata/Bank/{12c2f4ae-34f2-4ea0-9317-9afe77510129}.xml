@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="Bank" id="{12c2f4ae-34f2-4ea0-9317-9afe77510129}">
+		<property name="name">
+			<value>mus_shared</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c744fc4d-f90c-4c7f-a944-70c4e41a4076}</destination>
+		</relationship>
+	</object>
+</objects>

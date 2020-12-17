@@ -1,0 +1,310 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9097909089642541150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Global.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/Global.strings.bank
+  Name: Global.strings
+  lastModified: 637437962097895916
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1004
+  Exists: 1
+--- !u!114 &-6008038124625241953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/mus_shared.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/mus_shared.bank
+  Name: mus_shared
+  lastModified: 637437961411268911
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-5410997872280748637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/Master.bank
+  Name: Master
+  lastModified: 637437549748044374
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-3611890085424424697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/track_baby
+  m_EditorClassIdentifier: 
+  Path: event:/Music/track_baby
+  guid: edf9779d37616a4b92b1d0cb4218a7dc
+  Banks:
+  - {fileID: 2436903761916351436}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 101504
+--- !u!114 &-3245684250413764586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/voc_luigi.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/voc_luigi.bank
+  Name: voc_luigi
+  lastModified: 637437961411458799
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-1382729217054555043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/voc_mario.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/voc_mario.bank
+  Name: voc_mario
+  lastModified: 637437961411398839
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-1163515759301842024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Vocal/voc_mario.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/Vocal/voc_mario.bank
+  Name: Vocal/voc_mario
+  lastModified: 637437962099045260
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-764552057842669603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX/sfx_general_race.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/SFX/sfx_general_race.bank
+  Name: SFX/sfx_general_race
+  lastModified: 637437962098905343
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -9097909089642541150}
+  - {fileID: 9098283053020105251}
+  - {fileID: 2436903761916351436}
+  - {fileID: 1814703914689056081}
+  - {fileID: -764552057842669603}
+  - {fileID: 6300909058080905333}
+  - {fileID: -1163515759301842024}
+  EditorEvents:
+  - {fileID: -3611890085424424697}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 9098283053020105251}
+  StringsBanks:
+  - {fileID: -9097909089642541150}
+  stringsBankWriteTime: 637437962097895916
+  cacheVersion: 5
+--- !u!114 &1814703914689056081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music/mus_shared.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/Music/mus_shared.bank
+  Name: Music/mus_shared
+  lastModified: 637437962098715446
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &2368624575226541605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  lastModified: 637437549749521658
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 700
+  Exists: 1
+--- !u!114 &2436903761916351436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music/mus_baby.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/Music/mus_baby.bank
+  Name: Music/mus_baby
+  lastModified: 637437962098565543
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &2455267762168025563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/sfx_general_race.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/sfx_general_race.bank
+  Name: sfx_general_race
+  lastModified: 637437961411348860
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &2674073670104046424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/mus_baby.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/mus_baby.bank
+  Name: mus_baby
+  lastModified: 637437961411118999
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &6300909058080905333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Vocal/voc_luigi.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/Vocal/voc_luigi.bank
+  Name: Vocal/voc_luigi
+  lastModified: 637437962099165219
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &9098283053020105251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Global.bank
+  m_EditorClassIdentifier: 
+  Path: Misc/Music/music_pro/Build/Desktop/Global.bank
+  Name: Global
+  lastModified: 637437962097855934
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1

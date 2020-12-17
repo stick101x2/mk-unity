@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{d52280cf-8d62-4d4b-ac03-764c88493b9f}">
+		<property name="note" />
+		<property name="assetPath">
+			<value>track_baby.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>32</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>101.50409375</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8d0f46d7-9d66-4cbe-b957-14103cfd7dc1}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -48,6 +48,7 @@ public class Player_Main : MonoBehaviour
         //Handling
         float p_handling = f_handling;
         f_handling = Func.Remap(p_handling, 0.5f, 1.5f, 1, 0);
+        //float p_drift
 
     }
 

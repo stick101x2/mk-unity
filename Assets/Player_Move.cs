@@ -16,8 +16,15 @@ public class Player_Move : MonoBehaviour, IPlayer
         v.real_speed = transform.InverseTransformDirection(p.rid.velocity).z;
         float acceleration = foward ? v.c_accel : 1f;
         current_speed = Mathf.Lerp(current_speed, targetSpeed,  acceleration * (modifier * Time.deltaTime));
-
-        Vector3 fowardVector = transform.forward;
+        Vector3 fowardVector = new Vector2();
+        if (v.isDrifting)
+        {   if (v.driftDirection > 0)
+                fowardVector = v.drift_r.forward;
+            else 
+                fowardVector = v.drift_l.forward;
+        }
+        else
+            fowardVector = transform.forward;
         Vector3 velocity = fowardVector * v.c_speed;
         velocity.y = p.rid.velocity.y;
         p.rid.velocity = velocity;

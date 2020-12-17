@@ -14,18 +14,25 @@ public class Player_Variables : MonoBehaviour,IPlayer
     public float real_max_speed;
     [Header("Turning")]
     public float steerDirection;
+    public float turnSpeed = 8;
+    [Header("Drift")]
     public float driftDirection;
     public float driftTilt = 20;
-    public float turnSpeed = 8;
     public float outerwardDriftForce;
     public bool isDrifting;
+    public int driftCount;
+    public float driftTimer;
+    public float drift;
     [Header("Ground")]
     public LayerMask terrian;
     public bool isGrounded;
     public float groundNormalRotateSpeed = 7.5f;
     [Header("Boost")]
     public float boostTimer;
-
+    [Header("Transforms")]
+    public Transform pivot;
+    public Transform drift_r;
+    public Transform drift_l;
 
 
 
@@ -37,9 +44,8 @@ public class Player_Variables : MonoBehaviour,IPlayer
 
     public void Setup(Player p)
     {
-        c_max_speed = 50 * p.main.f_speed; //50 is defualt
-        real_max_speed = c_max_speed;
-        c_accel = p.main.f_acceleration;
+       
+        
     }
 
     //Ignore

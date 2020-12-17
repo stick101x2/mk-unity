@@ -15,4 +15,7 @@ public class Kart : MonoBehaviour
     public Transform wheel_front_L;
     public Transform wheel_back_R;
     public Transform wheel_back_L;
+    [Header("Drifting")]
+    public Transform drift_r;
+    public Transform drift_l;
 }

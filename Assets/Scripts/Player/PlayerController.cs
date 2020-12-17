@@ -12,14 +12,20 @@ public class PlayerController : MonoBehaviour, IPlayer
     Player_Variables v;
     //vars
     Transform pivot;
+    Transform drift_r;
+    Transform drift_l;
     //private
-    
+
     public float steerM; // NOW
     public float steerC; // CURRENT
     public float steerMod = 10;
     public float debug_sAmt;
     //p
     float steerAmount = 0;
+
+    float weight;
+    float handling;
+    float traction; // will be multipled by surface traction
     // Start is called before the first frame update
     public void Setup(Player p)
     {
@@ -28,12 +34,29 @@ public class PlayerController : MonoBehaviour, IPlayer
         move = GetComponent<Player_Move>();
         v = p.var;
         input = p.input;
-        pivot = transform.GetChild(0);
+        v.pivot = transform.GetChild(0);
+        v.drift_r = transform.GetChild(1);
+        v.drift_l = transform.GetChild(2);
 
-        backleft= p.main.c_kart.wheel_back_L;
+        pivot = v.pivot;
+
+        v.drift_l.rotation = p.main.c_kart.drift_l.rotation;
+        v.drift_r.rotation = p.main.c_kart.drift_r.rotation;
+
+        drift_r = v.drift_r;
+        drift_l = v.drift_l;
+
+        backleft = p.main.c_kart.wheel_back_L;
         backright= p.main.c_kart.wheel_back_R;
         frontleft= p.main.c_kart.wheel_front_L;
         frontright= p.main.c_kart.wheel_front_R;
+
+        v.c_max_speed = 50 * p.main.f_speed * p.main.f_weight; //50 is defualt
+        v.real_max_speed = v.c_max_speed;
+        v.c_accel = p.main.f_acceleration;
+
+        handling = p.main.f_handling;
+        traction = p.main.f_offroad; 
 
         p.AddState("normal", new Normal_State(this));
     }
@@ -50,19 +73,20 @@ public class PlayerController : MonoBehaviour, IPlayer
 
     void Move()
     {
+        float isDrift = !v.isDrifting == true ? 1 : 0;
         if(input.accelHeld &&!input.dccelHeld)
         {
-            move.Move(ref v.c_speed,v.c_max_speed - (steerC * p.main.f_handling), 1f);
+            move.Move(ref v.c_speed,v.c_max_speed - (steerC * handling) * isDrift, 1f * traction);
         }
         else if(input.dccelHeld && !input.accelHeld)
         {
-            move.Move(ref v.c_speed, -(v.c_max_speed * 0.675f - (steerC * p.main.f_handling)),2f);
+            move.Move(ref v.c_speed, -(v.c_max_speed * 0.675f - (steerC * handling) * isDrift),2f * traction);
         }else 
         {
             if (input.accelHeld && input.dccelHeld)
                 move.Move(ref v.c_speed, 0, 4f);
             else
-                move.Move(ref v.c_speed, 0, 1.5f);
+                move.Move(ref v.c_speed, 0, 1.5f * traction);
         }
     }
     void Tires()
@@ -82,10 +106,19 @@ public class PlayerController : MonoBehaviour, IPlayer
 
         if(v.isDrifting)
         {
-            if(v.driftDirection < 0)
+            if (v.driftDirection < 0)
+            {
                 v.steerDirection = input.x < 0 ? -1.5f : -0.5f;
+                if (Mathf.Abs(input.x) < 0.1f)
+                    v.steerDirection = -1;
+            }
             else
+            {
                 v.steerDirection = input.x > 0 ? 1.5f : 0.5f;
+                if (Mathf.Abs(input.x) < 0.1f)
+                    v.steerDirection = 1;
+            }
+           
             pivot.localRotation = Quaternion.Lerp(pivot.localRotation, Quaternion.Euler(0, v.driftTilt * v.driftDirection, 0), v.turnSpeed * Time.deltaTime);
 
             p.rid.AddForce(transform.right * -v.outerwardDriftForce * v.driftDirection, ForceMode.Acceleration);
@@ -98,9 +131,9 @@ public class PlayerController : MonoBehaviour, IPlayer
         // Debug.Log(turnSpeedModifier);
        
 
-        steerAmount = input.accelHeld && input.dccelHeld && Mathf.Abs(v.c_speed) < 0.1f ? v.c_max_speed * v.steerDirection : v.real_speed / turnSpeedModifier * v.steerDirection;
-
-         steerM = Mathf.Abs(steerAmount) < 0.1f ? 0 : Mathf.Sign(steerAmount);
+        steerAmount = input.accelHeld && input.dccelHeld && Mathf.Abs(v.c_speed) < 1f ? v.c_max_speed * v.steerDirection : v.real_speed / turnSpeedModifier * v.steerDirection;
+        steerAmount *= traction;
+        steerM = Mathf.Abs(steerAmount) < 0.1f ? 0 : Mathf.Sign(steerAmount);
 
 
 
@@ -114,16 +147,60 @@ public class PlayerController : MonoBehaviour, IPlayer
        debug_sAmt = steerAmount;
        // debug_sDVect = steerDirVector;
     }
-
+    
     void Drift()
     {
-        if (input.driftDown)
+        if (input.driftDown && Mathf.Abs(v.steerDirection) > 0.1f)
         {
-
+            StartDrift();
             input.driftDown = false;
+        }
+        if (input.driftHeld && v.isGrounded && v.c_speed > (v.c_max_speed * 0.4f) * traction)
+        {
+            float lastDrift = v.drift;
+            v.drift = Func.Remap(Mathf.Abs(v.steerDirection), 0.5f, 1.5f, -1f, 1f) * v.driftDirection;
+
+            if (v.driftTimer >= 1f)
+            {
+                if (lastDrift > 0 && v.drift <= 0 || lastDrift < 0 && v.drift >= 0)
+                { 
+                    v.driftTimer = 0;
+                    v.driftCount++;
+                    Dev.Log("Drifted");
+                }
+            }
+
+            if (Mathf.Abs(v.drift) > 0)
+            {
+                v.driftTimer += Time.deltaTime * 3f;
+                if (v.driftTimer > 1f)
+                    v.driftTimer = 1f;
+            }
+            else
+                v.driftTimer = 0;
         }
     }
 
+
+    void StartDrift()
+    {
+        //do hop
+        v.driftDirection = Mathf.Sign(v.steerDirection);
+        v.isDrifting = true;
+        v.driftCount = 0;
+        v.driftTimer = 0;
+    }
+
+    void Drifting()
+    {
+        
+    }
+
+    void EndDrift()
+    {
+        v.driftDirection = 0;
+        v.isDrifting = false;
+    }
     Transform backleft;
     Transform backright;
     Transform frontleft;
@@ -210,6 +287,7 @@ public class PlayerController : MonoBehaviour, IPlayer
             p.Tires();
             p.Steer();
             p.GroundNormalRotation();
+            p.Drift();
         }
         public void OnExit(IState nextState) //Leave State
         {
