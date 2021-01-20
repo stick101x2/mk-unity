@@ -17,8 +17,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: mario_eye_L_tx
+    second: {fileID: 2100000, guid: 771019a1547de9e4994c7dd39d1c0612, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mario_eye_R_tx
+    second: {fileID: 2100000, guid: dd2950fc474cd31439859b77ba5918d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: mario_eye_tx.001
     second: {fileID: 2100000, guid: 771019a1547de9e4994c7dd39d1c0612, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mario_eyeball_L_tx_
+    second: {fileID: 2100000, guid: 6449a64be17dd8a4e89e1b1a6e9caf77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mario_eyeball_R_tx
+    second: {fileID: 2100000, guid: d67b718aee628404f80ee5bc84ffbd33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mario_mouth_tx
+    second: {fileID: 2100000, guid: d0bf3866408552347b594c6a7df25602, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

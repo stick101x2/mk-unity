@@ -12,10 +12,15 @@ public class Player_Variables : MonoBehaviour,IPlayer
 
     public float real_speed;
     public float real_max_speed;
+
+    public float maxYVelocity = 100f;
     [Header("Turning")]
     public float steerDirection;
     public float turnSpeed = 8;
+    public float modelturnSpeed = 8;
+    public float returnSpeed = 2f;
     [Header("Drift")]
+    public float hopForce;
     public float driftDirection;
     public float driftTilt = 20;
     public float outerwardDriftForce;
@@ -30,11 +35,15 @@ public class Player_Variables : MonoBehaviour,IPlayer
     [Header("Boost")]
     public float boostTimer;
     [Header("Transforms")]
+    public Transform mainRot;
     public Transform pivot;
     public Transform drift_r;
     public Transform drift_l;
-
-
+    [Header("AntiGravity")]
+    public bool antiGravity;
+    public float antiGravityForce = -5f;
+    [Header("Bool")]
+    public bool usingAntiGravity;
 
 
 

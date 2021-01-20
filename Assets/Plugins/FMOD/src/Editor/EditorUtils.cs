@@ -920,5 +920,34 @@ namespace FMODUnity
             string eventGuid = GetScriptOutput(string.Format("event.id;"));
             return eventGuid;
         }
+
+        [InitializeOnLoadMethod]
+        private static void CleanObsoleteFiles()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+            {
+                // Messing with the asset database while entering play mode causes a NullReferenceException
+                return;
+            }
+            if (AssetDatabase.IsValidFolder("Assets/Plugins/FMOD/obsolete"))
+            {
+                EditorApplication.LockReloadAssemblies();
+
+                string[] guids = AssetDatabase.FindAssets(string.Empty, new string[] { "Assets/Plugins/FMOD/obsolete" });
+                foreach (string guid in guids)
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(guid);
+                    if (AssetDatabase.DeleteAsset(path))
+                    {
+                        Debug.LogFormat("FMOD: Removed obsolete file {0}", path);
+                    }
+                }
+                if(AssetDatabase.MoveAssetToTrash("Assets/Plugins/FMOD/obsolete"))
+                {
+                    Debug.LogFormat("FMOD: Removed obsolete folder Assets/Plugins/FMOD/obsolete");
+                }
+                EditorApplication.UnlockReloadAssemblies();
+            }
+        }
     }
 }

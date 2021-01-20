@@ -1,0 +1,290 @@
+# Blender MTL File: 'ds_rainbow_track.blend'
+# Material Count: 24
+
+newmtl DASH
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_dash_02.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_dash_02.png
+
+newmtl dokan
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_dokan3.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_dokan3.png
+
+newmtl heri
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_heri2.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_heri2.png
+
+newmtl lambert212
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_start_line2.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_start_line2.png
+
+newmtl logo
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_logo.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_logo.png
+
+newmtl lwall
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_saku5.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_saku5.png
+
+newmtl pasted__star_obj
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_star_obj.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_star_obj.png
+
+newmtl rainbow0
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+
+newmtl rainbow0_d
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+
+newmtl rainbow1
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+
+newmtl rainbow1_d
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+
+newmtl rainbow2
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+
+newmtl rainbow2_d
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+
+newmtl rainbow3
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+
+newmtl rainbow3_d
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+
+newmtl rainbow4
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+
+newmtl rainbow4_d
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+
+newmtl rainbow5
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+
+newmtl rainbow5_d
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5_yd.png
+
+newmtl rrainbow7
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_road5.png
+
+newmtl star
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_star.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_star.png
+
+newmtl start_post
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_star_obj.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_star_obj.png
+
+newmtl wa1
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_wa1.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_wa1.png
+
+newmtl ya
+Ns -3.921569
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_ya.png
+map_d C:\\Users\\tmoun\\Desktop\\Chromes\\CHRISTOPHER STUFF\\Games\\sm64\\DS\\apicula-latest-x86_64-pc-windows-msvc\\dae files kart ds\\nr_ya.png

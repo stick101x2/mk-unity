@@ -18,4 +18,23 @@ public class Kart : MonoBehaviour
     [Header("Drifting")]
     public Transform drift_r;
     public Transform drift_l;
+    [Header("Particles")]
+    public ParticleGroup smokeIdle;
+    public ParticleGroup smokeDrive;
+    public ParticleGroup smokeBurst;
+    [Space(5)]
+    public ParticleGroup driftR;
+    public ParticleGroup driftRBurst;
+    public ParticleSystem BwheelDustR;
+    [Space(5)]
+    public ParticleGroup driftL;
+    public ParticleGroup driftLBurst;
+    public ParticleSystem BwheelDustL;
+    [Space(5)]
+    public Color driftOrange = Color.black;
+    public Color driftBlue = Color.black;
+    public Color driftPurple = Color.black;
+    [Header("References")]
+    public Animator anim;
+
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{97f2f41e-2b23-4036-af5e-20781ca34c10}">
+		<property name="name">
+			<value>engine_driving</value>
+		</property>
+		<relationship name="folder">
+			<destination>{01bb278e-8f69-409b-947a-be1358957abe}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{6b3d5a45-4106-4fd5-a0ec-2a4728d07478}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{6b3d5a45-4106-4fd5-a0ec-2a4728d07478}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

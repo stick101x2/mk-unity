@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         audio = FindObjectOfType<AudioManager>().Setup();
+        audio.UnLoadBank(-1);
         audio.LoadBank(-1);
         audio.SoundSetup();
-        audio.Play("Main");
+       // audio.Play("Main");
     }
 }

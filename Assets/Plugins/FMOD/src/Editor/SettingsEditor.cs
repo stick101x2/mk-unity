@@ -103,6 +103,354 @@ namespace FMODUnity
             }
         }
 
+        Dictionary<string, bool> expandThreadAffinity = new Dictionary<string, bool>();
+
+        void DisplayThreadAffinity(string label, Platform platform)
+        {
+            if (platform.CoreCount > 0 && DisplayThreadAffinityFoldout(label, platform))
+            {
+                EditorGUI.indentLevel++;
+
+                DisplayThreadAffinityGroups(platform);
+
+                EditorGUI.indentLevel--;
+            }
+        }
+
+        bool DisplayThreadAffinityFoldout(string label, Platform platform)
+        {
+            Rect headerRect = EditorGUILayout.GetControlRect();
+
+            Rect labelRect = headerRect;
+            labelRect.width = EditorGUIUtility.labelWidth;
+
+            bool expand;
+
+            if (!expandThreadAffinity.TryGetValue(platform.Identifier, out expand))
+            {
+                expand = false;
+            }
+
+            EditorGUI.BeginChangeCheck();
+
+            expand = EditorGUI.Foldout(labelRect, expand, label);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                expandThreadAffinity[platform.Identifier] = expand;
+            }
+
+            bool useDefaults = !platform.ThreadAffinitiesProperty.HasValue;
+
+            EditorGUI.BeginChangeCheck();
+
+            Rect toggleRect = headerRect;
+            toggleRect.xMin = labelRect.xMax;
+
+            useDefaults = GUI.Toggle(toggleRect, useDefaults, "Use Defaults");
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (useDefaults)
+                {
+                    platform.ThreadAffinitiesProperty.Value.Clear();
+                    platform.ThreadAffinitiesProperty.HasValue = false;
+                }
+                else
+                {
+                    platform.ThreadAffinitiesProperty.Value = new List<ThreadAffinityGroup>();
+                    platform.ThreadAffinitiesProperty.HasValue = true;
+
+                    foreach (ThreadAffinityGroup group in platform.DefaultThreadAffinities)
+                    {
+                        platform.ThreadAffinitiesProperty.Value.Add(new ThreadAffinityGroup(group));
+                    }
+                }
+            }
+
+            return expand;
+        }
+
+        const int THREAD_AFFINITY_CORES_PER_ROW = 8;
+
+        void DisplayThreadAffinityGroups(Platform platform)
+        {
+            GUIStyle affinityStyle = EditorStyles.miniButton;
+            float affinityWidth = affinityStyle.CalcSize(new GUIContent("00")).x;
+
+            GUIContent anyButtonContent = new GUIContent("Any");
+            float anyButtonWidth = affinityStyle.CalcSize(anyButtonContent).x;
+
+            float threadsWidth = EditorGUIUtility.labelWidth;
+            float affinitiesWidth = affinityWidth * THREAD_AFFINITY_CORES_PER_ROW + anyButtonWidth;
+
+            bool editable = platform.ThreadAffinitiesProperty.HasValue;
+
+            if (platform.ThreadAffinities.Any())
+            {
+                DisplayThreadAffinitiesHeader(threadsWidth, affinitiesWidth);
+
+                ThreadAffinityGroup groupToDelete = null;
+
+                EditorGUI.BeginDisabledGroup(!editable);
+
+                foreach (ThreadAffinityGroup group in platform.ThreadAffinities)
+                {
+                    bool delete;
+                    DisplayThreadAffinityGroup(group, platform, threadsWidth, affinitiesWidth,
+                        anyButtonWidth, anyButtonContent, affinityStyle, affinityWidth, out delete);
+
+                    if (delete)
+                    {
+                        groupToDelete = group;
+                    }
+                }
+
+                if (groupToDelete != null)
+                {
+                    platform.ThreadAffinitiesProperty.Value.Remove(groupToDelete);
+                }
+
+                EditorGUI.EndDisabledGroup();
+            }
+            else
+            {
+                Rect messageRect = EditorGUILayout.GetControlRect();
+                messageRect.width = threadsWidth + affinitiesWidth;
+                messageRect = EditorGUI.IndentedRect(messageRect);
+
+                GUI.Label(messageRect, "List is Empty");
+            }
+
+            if (editable)
+            {
+                Rect addButtonRect = EditorGUILayout.GetControlRect();
+                addButtonRect.width = threadsWidth + affinitiesWidth;
+                addButtonRect = EditorGUI.IndentedRect(addButtonRect);
+
+                if (GUI.Button(addButtonRect, "Add"))
+                {
+                    platform.ThreadAffinitiesProperty.Value.Add(new ThreadAffinityGroup());
+                }
+            }
+        }
+
+        void DisplayThreadAffinitiesHeader(float threadsWidth, float affinitiesWidth)
+        {
+            Rect controlRect = EditorGUILayout.GetControlRect(false, EditorGUIUtility.singleLineHeight);
+
+            Rect threadsRect = controlRect;
+            threadsRect.width = threadsWidth;
+
+            threadsRect = EditorGUI.IndentedRect(threadsRect);
+
+            GUI.Label(threadsRect, "Threads");
+
+            Rect coresRect = controlRect;
+            coresRect.x = threadsRect.xMax;
+            coresRect.width = affinitiesWidth;
+
+            GUI.Label(coresRect, "Cores");
+        }
+
+        void DisplayThreadAffinityGroup(ThreadAffinityGroup group, Platform platform,
+            float threadsWidth, float affinitiesWidth, float anyButtonWidth, GUIContent anyButtonContent,
+            GUIStyle affinityStyle, float affinityWidth, out bool delete)
+        {
+            delete = false;
+
+            GUIStyle editButtonStyle = EditorStyles.popup;
+
+            GUIContent editButtonContent = new GUIContent("Edit");
+            Rect editButtonRect = new Rect(Vector2.zero, editButtonStyle.CalcSize(editButtonContent));
+
+            float threadsHeight = group.threads.Count * EditorGUIUtility.singleLineHeight;
+
+            bool editable = platform.ThreadAffinitiesProperty.HasValue;
+
+            if (editable)
+            {
+                 threadsHeight += EditorGUIUtility.standardVerticalSpacing + editButtonRect.height;
+            }
+
+            float affinitiesHeight =
+                Mathf.Ceil(platform.CoreCount / (float)THREAD_AFFINITY_CORES_PER_ROW) * EditorGUIUtility.singleLineHeight;
+
+            Rect controlRect = EditorGUILayout.GetControlRect(false, Math.Max(threadsHeight, affinitiesHeight));
+
+            Rect threadsRect = controlRect;
+            threadsRect.width = threadsWidth;
+
+            threadsRect = EditorGUI.IndentedRect(threadsRect);
+
+            GUIStyle boxStyle = EditorStyles.textArea;
+
+            GUI.Box(threadsRect, string.Empty, boxStyle);
+
+            Rect threadRect = threadsRect;
+            threadRect.height = EditorGUIUtility.singleLineHeight;
+
+            foreach (ThreadType thread in group.threads)
+            {
+                GUI.Label(threadRect, thread.DisplayName());
+                threadRect.y += threadRect.height;
+            }
+
+            if (editable)
+            {
+                editButtonRect.y = threadsRect.yMax - editButtonRect.height - editButtonStyle.margin.bottom;
+                editButtonRect.center = new Vector2(threadsRect.center.x, editButtonRect.center.y);
+
+                if (EditorGUI.DropdownButton(editButtonRect, editButtonContent, FocusType.Passive, editButtonStyle))
+                {
+                    ThreadListEditor.Show(editButtonRect, group, platform.ThreadAffinities, this);
+                }
+            }
+
+            Rect affinitiesRect = controlRect;
+            affinitiesRect.xMin = threadsRect.xMax;
+            affinitiesRect.width = affinitiesWidth;
+
+            GUI.Box(affinitiesRect, string.Empty, boxStyle);
+
+            Rect anyButtonRect = affinitiesRect;
+            anyButtonRect.height = affinitiesHeight;
+            anyButtonRect.width = anyButtonWidth;
+
+            if (GUI.Toggle(anyButtonRect, group.affinity == ThreadAffinity.Any, anyButtonContent, affinityStyle))
+            {
+                group.affinity = ThreadAffinity.Any;
+            }
+
+            Rect affinityRect = affinitiesRect;
+            affinityRect.x = anyButtonRect.xMax;
+            affinityRect.height = EditorGUIUtility.singleLineHeight;
+            affinityRect.width = affinityWidth;
+
+            for (int i = 0; i < platform.CoreCount; ++i)
+            {
+                ThreadAffinity mask = (ThreadAffinity)(1U << i);
+
+                if (GUI.Toggle(affinityRect, (group.affinity & mask) == mask, i.ToString(), affinityStyle))
+                {
+                    group.affinity |= mask;
+                }
+                else
+                {
+                    group.affinity &= ~mask;
+                }
+
+                if (i % THREAD_AFFINITY_CORES_PER_ROW == THREAD_AFFINITY_CORES_PER_ROW - 1)
+                {
+                    affinityRect.x = anyButtonRect.xMax;
+                    affinityRect.y += affinityRect.height;
+                }
+                else
+                {
+                    affinityRect.x += affinityRect.width;
+                }
+            }
+
+            if (editable)
+            {
+                GUIStyle deleteButtonStyle = GUI.skin.button;
+                GUIContent deleteButtonContent = new GUIContent("Delete");
+
+                Rect deleteButtonRect = controlRect;
+                deleteButtonRect.x = affinitiesRect.xMax;
+                deleteButtonRect.width = deleteButtonStyle.CalcSize(deleteButtonContent).x;
+
+                if (GUI.Button(deleteButtonRect, deleteButtonContent, deleteButtonStyle))
+                {
+                    delete = true;
+                }
+            }
+        }
+
+        class ThreadListEditor : EditorWindow
+        {
+            ThreadAffinityGroup group;
+            IEnumerable<ThreadAffinityGroup> groups;
+            Editor parent;
+
+            public static void Show(Rect buttonRect, ThreadAffinityGroup group, IEnumerable<ThreadAffinityGroup> groups,
+                Editor parent)
+            {
+                ThreadListEditor editor = CreateInstance<ThreadListEditor>();
+                editor.group = group;
+                editor.groups = groups;
+                editor.parent = parent;
+
+                Rect rect = new Rect(GUIUtility.GUIToScreenPoint(buttonRect.position), buttonRect.size);
+
+                editor.ShowAsDropDown(rect, CalculateSize());
+            }
+
+            private static GUIStyle FrameStyle { get { return GUI.skin.box; } }
+            private static GUIStyle ThreadStyle { get { return EditorStyles.toggle; } }
+
+            private static Vector2 CalculateSize()
+            {
+                Vector2 result = Vector2.zero;
+
+                Array enumValues = Enum.GetValues(typeof(ThreadType));
+
+                foreach (ThreadType thread in enumValues)
+                {
+                    Vector2 size = ThreadStyle.CalcSize(new GUIContent(thread.DisplayName()));
+                    result.x = Mathf.Max(result.x, size.x);
+                }
+
+                result.y = enumValues.Length * EditorGUIUtility.singleLineHeight
+                    + (enumValues.Length - 1) * EditorGUIUtility.standardVerticalSpacing;
+
+                result.x += FrameStyle.padding.horizontal;
+                result.y += FrameStyle.padding.vertical;
+
+                return result;
+            }
+
+            private void OnGUI()
+            {
+                Rect frameRect = new Rect(0, 0, position.width, position.height);
+
+                GUI.Box(frameRect, string.Empty, FrameStyle);
+
+                Rect threadRect = FrameStyle.padding.Remove(frameRect);
+                threadRect.height = EditorGUIUtility.singleLineHeight;
+
+                foreach (ThreadType thread in Enum.GetValues(typeof(ThreadType)))
+                {
+                    EditorGUI.BeginChangeCheck();
+
+                    bool include = EditorGUI.ToggleLeft(threadRect, thread.DisplayName(), group.threads.Contains(thread));
+
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        if (include)
+                        {
+                            // Make sure each thread is only in one group
+                            foreach (ThreadAffinityGroup other in groups)
+                            {
+                                other.threads.Remove(thread);
+                            }
+
+                            group.threads.Add(thread);
+                            group.threads.Sort();
+                        }
+                        else
+                        {
+                            group.threads.Remove(thread);
+                        }
+
+                        parent.Repaint();
+                    }
+
+                    threadRect.y = threadRect.yMax + EditorGUIUtility.standardVerticalSpacing;
+                }
+            }
+        }
+
         void DisplaySampleRate(string label, Platform platform)
         {
             int currentValue = platform.SampleRate;
@@ -330,6 +678,50 @@ namespace FMODUnity
             EditorGUILayout.EndHorizontal();
         }
 
+        void DisplayLiveUpdatePort(string label, Platform platform, Platform.PropertyAccessor<int> property)
+        {
+            EditorGUILayout.BeginHorizontal();
+
+            int currentValue = property.Get(platform);
+
+            if (platform.Parent != null)
+            {
+                EditorGUILayout.PrefixLabel(label);
+
+                bool inherit = !property.HasValue(platform);
+
+                inherit = GUILayout.Toggle(inherit, "Inherit");
+
+                EditorGUI.BeginDisabledGroup(inherit);
+                int next = int.Parse(EditorGUILayout.TextField("", currentValue.ToString(), GUILayout.MinWidth(50)));
+                if (GUILayout.Button("Reset", GUILayout.ExpandWidth(false)))
+                {
+                    next = 9264;
+                }
+                EditorGUI.EndDisabledGroup();
+
+                if (inherit)
+                {
+                    property.Clear(platform);
+                }
+                else
+                {
+                    property.Set(platform, next);
+                }
+            }
+            else
+            {
+                int next = int.Parse(EditorGUILayout.TextField(label, currentValue.ToString()));
+                if (GUILayout.Button("Reset", GUILayout.ExpandWidth(false)))
+                {
+                    next = 9264;
+                }
+                property.Set(platform, next);
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
         private bool DrawLinks()
         {
             string color = EditorGUIUtility.isProSkin ? "#fa4d14" : "#0000FF";
@@ -454,26 +846,7 @@ namespace FMODUnity
 
                 if (platform.IsLiveUpdateEnabled)
                 {
-                    if (platform.IsIntrinsic)
-                    {
-                        EditorGUILayout.BeginHorizontal();
-                        settings.LiveUpdatePort = ushort.Parse(EditorGUILayout.TextField("Live Update Port", settings.LiveUpdatePort.ToString()));
-                        if (GUILayout.Button("Reset", GUILayout.ExpandWidth(false)))
-                        {
-                            settings.LiveUpdatePort = 9264;
-                        }
-                        EditorGUILayout.EndHorizontal();
-                    }
-                    else
-                    {
-                        GUIStyle style = new GUIStyle(GUI.skin.label);
-                        style.richText = true;
-
-                        EditorGUILayout.BeginHorizontal();
-                        EditorGUILayout.PrefixLabel(" ");
-                        GUILayout.Label(string.Format("Live update will listen on port <b>{0}</b>", settings.LiveUpdatePort), style);
-                        EditorGUILayout.EndHorizontal();
-                    }
+                    DisplayLiveUpdatePort("Live Update Port", platform, Platform.PropertyAccessors.LiveUpdatePort);
                 }
 
                 DisplayTriStateBool("Debug Overlay", platform, Platform.PropertyAccessors.Overlay);
@@ -522,6 +895,8 @@ namespace FMODUnity
                 }
 
                 DisplayPlugins("Dynamic Plugins", platform, Platform.PropertyAccessors.Plugins, expandDynamicPlugins);
+
+                DisplayThreadAffinity("Thread Affinity", platform);
 
                 if (!platform.IsIntrinsic)
                 {
@@ -879,18 +1254,17 @@ namespace FMODUnity
             ImportType importType = (ImportType)EditorGUILayout.EnumPopup("Import Type", settings.ImportType);
             if (importType != settings.ImportType)
             {
-                hasBankTargetChanged = true;
-                settings.ImportType = importType;
-
                 bool deleteBanks = EditorUtility.DisplayDialog(
                     "FMOD Bank Import Type Changed", "Do you want to delete the " + settings.ImportType.ToString() + " banks in " + settings.TargetPath,
                     "Yes", "No");
+
                 if (deleteBanks)
                 {
                     // Delete the old banks
-                    EventManager.removeBanks = true;
-                    EventManager.RefreshBanks();
+                    EventManager.RemoveBanks(settings.TargetPath);
                 }
+                hasBankTargetChanged = true;
+                settings.ImportType = importType;
             }
 
             // ----- Asset Sub Directory -------------
@@ -921,7 +1295,7 @@ namespace FMODUnity
                 }
                 else if (focused)
                 {
-                    if (settings.TargetPath != targetSubFolder)
+                    if (settings.TargetSubFolder != targetSubFolder)
                     {
                         EventManager.RemoveBanks(settings.TargetPath);
                         settings.TargetSubFolder = targetSubFolder;
@@ -948,6 +1322,7 @@ namespace FMODUnity
             {
                 EditorWindow.GetWindow<EventBrowser>("FMOD Events", false).Repaint();
             }
+            settings.StopEventsOutsideMaxDistance = EditorGUILayout.Toggle("Stop Events Outside Max Distance", settings.StopEventsOutsideMaxDistance);
             EditorGUI.indentLevel--;
 
             // ----- Loading -----------------
@@ -1038,12 +1413,12 @@ namespace FMODUnity
                                 sourceDir = settings.SourceBankPath;
                             }
 
-                            sourceDir = RuntimeUtils.GetCommonPlatformPath(sourceDir);
-
+                            sourceDir = RuntimeUtils.GetCommonPlatformPath(Path.GetFullPath(sourceDir));
                             var banksFound = new List<string>(Directory.GetFiles(sourceDir, "*.bank", SearchOption.AllDirectories));
                             for (int i = 0; i < banksFound.Count; i++)
                             {
-                                string bankShortName = RuntimeUtils.GetCommonPlatformPath(banksFound[i]).Replace(sourceDir, "");
+                                string bankLongName = RuntimeUtils.GetCommonPlatformPath(Path.GetFullPath(banksFound[i]));
+                                string bankShortName = bankLongName.Replace(sourceDir, "");
                                 if (!settings.BanksToLoad.Contains(bankShortName))
                                 {
                                     settings.BanksToLoad.Add(bankShortName);

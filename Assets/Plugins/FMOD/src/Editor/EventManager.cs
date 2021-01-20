@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor.Build;
+using System.Reflection;
+using System.Collections;
 #if UNITY_2018_1_OR_NEWER
 using UnityEditor.Build.Reporting;
 #endif
@@ -28,15 +30,22 @@ namespace FMODUnity
 
         static int countdownTimer;
 
-        public static bool removeBanks = false;
-
 #if UNITY_EDITOR
         [MenuItem("FMOD/Refresh Banks", priority = 1)]
-        public static void RefreshBanks()
+        public static void ForceRefresh()
         {
             countdownTimer = 0;
+            RefreshBanks();
+        }
+
+        public static void RefreshBanks()
+        {
             UpdateCache();
             OnCacheChange();
+            if (Settings.Instance.ImportType == ImportType.AssetBundle)
+            {
+                CopyToStreamingAssets();
+            }
         }
 #endif
 
@@ -266,10 +275,13 @@ namespace FMODUnity
                     }
 
                     stringsBankRef.SetPath(stringBankPath, defaultBankFolder);
+                    string studioPath;
+                    stringBank.getPath(out studioPath);
+                    stringsBankRef.SetStudioPath(studioPath);
                     stringsBankRef.LastModified = stringBankFileInfo.LastWriteTime;
                     stringsBankRef.Exists = true;
                     stringsBankRef.FileSizes.Clear();
-
+                  
                     if (Settings.Instance.HasPlatforms)
                     {
                         for (int i = 0; i < bankPlatforms.Length; i++)
@@ -368,7 +380,7 @@ namespace FMODUnity
             // Clear out any cached events from this bank
             eventCache.EditorEvents.ForEach((x) => x.Banks.Remove(bankRef));
 
-            FMOD.Studio.Bank bank;
+            FMOD.Studio.Bank bank; 
             bankRef.LoadResult = EditorUtils.System.loadBankFile(bankRef.Path, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out bank);
 
             if (bankRef.LoadResult == FMOD.RESULT.ERR_EVENT_ALREADY_LOADED)
@@ -380,6 +392,11 @@ namespace FMODUnity
 
             if (bankRef.LoadResult == FMOD.RESULT.OK)
             {
+                // Get studio path
+                string studioPath;
+                bank.getPath(out studioPath);
+                bankRef.SetStudioPath(studioPath);
+
                 // Iterate all events in the bank and cache them
                 FMOD.Studio.EventDescription[] eventList;
                 var result = bank.getEventList(out eventList);
@@ -490,6 +507,86 @@ namespace FMODUnity
             EditorApplication.update += Update;
         }
 
+        public static void CheckValidEventRefs(UnityEngine.SceneManagement.Scene scene)
+        {
+            foreach (var gameObject in scene.GetRootGameObjects())
+            {
+                MonoBehaviour[] allBehaviours = gameObject.GetComponentsInChildren<MonoBehaviour>();
+
+                foreach (MonoBehaviour behaviour in allBehaviours)
+                {
+                    if (behaviour != null)
+                    {
+                        Type componentType = behaviour.GetType();
+
+                        FieldInfo[] fields = componentType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                        foreach (FieldInfo item in fields)
+                        {
+                            if (HasAttribute(item, typeof(EventRefAttribute)))
+                            {
+                                if (item.FieldType == typeof(string))
+                                {
+                                    string output = item.GetValue(behaviour) as string;
+
+                                    if (!IsValidEventRef(output))
+                                    {
+                                        Debug.LogWarningFormat("FMOD Studio: Unable to find FMOD Event \"{0}\" in scene \"{1}\" at path \"{2}\" \n- check the FMOD Studio event paths are set correctly in the Unity editor", output, scene.name, GetGameObjectPath(behaviour.transform));
+                                    }
+                                }
+                                else if (typeof(IEnumerable).IsAssignableFrom(item.FieldType))
+                                {
+                                    foreach (var listItem in (IEnumerable)item.GetValue(behaviour))
+                                    {
+                                        if (listItem.GetType() == typeof(string))
+                                        {
+                                            string listOutput = listItem as string;
+                                            if (!IsValidEventRef(listOutput))
+                                            {
+                                                Debug.LogWarningFormat("FMOD Studio: Unable to find FMOD Event \"{0}\" in scene \"{1}\" at path \"{2}\" \n- check the FMOD Studio event paths are set correctly in the Unity editor", listOutput, scene.name, GetGameObjectPath(behaviour.transform));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private static string GetGameObjectPath(Transform transform)
+        {
+            string objectPath = "/" + transform.name;
+            while(transform.parent != null)
+            {
+                transform = transform.parent;
+                objectPath = "/" + transform.name + objectPath;
+            }
+            return objectPath;
+        }
+
+        private static bool HasAttribute(MemberInfo provider, params Type[] attributeTypes)
+        {
+            Attribute[] allAttributes = Attribute.GetCustomAttributes(provider, typeof(Attribute), true);
+
+            if (allAttributes.Length == 0)
+            {
+                return false;
+            }
+            return allAttributes.Where(a => attributeTypes.Any(x => a.GetType() == x || x.IsAssignableFrom(a.GetType()))).Any();
+        }
+
+        private static bool IsValidEventRef(string reference)
+        {
+            if (string.IsNullOrEmpty(reference))
+            {
+                return true;
+            }
+            EditorEventRef eventRef = EventManager.EventFromPath(reference);
+            return eventRef != null;
+        }
+
         private const string FMODLabel = "FMOD";
 
         public static void CopyToStreamingAssets()
@@ -530,17 +627,6 @@ namespace FMODUnity
             }
 
             bool madeChanges = false;
-
-            if (removeBanks)
-            {
-                string oldBankTargetFolder =
-                Settings.Instance.ImportType == ImportType.AssetBundle
-                ? Settings.Instance.TargetPath
-                : Application.dataPath + "/" + Settings.Instance.TargetAssetPath;
-
-                RemoveBanks(oldBankTargetFolder);
-                madeChanges = true;
-            }
 
             try
             {
@@ -844,7 +930,8 @@ namespace FMODUnity
                 BuildTargetChanged();
             }
         }
-        #if UNITY_2018_1_OR_NEWER
+
+#if UNITY_2018_1_OR_NEWER
         public class PreprocessBuild : IPreprocessBuildWithReport
         {
             public int callbackOrder { get { return 0; } }
@@ -854,7 +941,19 @@ namespace FMODUnity
                 CopyToStreamingAssets();
             }
         }
-        #else
+
+        public class PreprocessScene : IProcessSceneWithReport
+        {
+            public int callbackOrder { get { return 0; } }
+
+            public void OnProcessScene(UnityEngine.SceneManagement.Scene scene, BuildReport report)
+            {
+                if (report == null) return;
+
+                CheckValidEventRefs(scene);
+            }
+        }
+#else
         public class PreprocessBuild : IPreprocessBuild
         {
             public int callbackOrder { get { return 0; } }
@@ -864,7 +963,17 @@ namespace FMODUnity
                 CopyToStreamingAssets();
             }
         }
-        #endif
+
+        public class PreprocessScene : IProcessScene
+        {
+            public int callbackOrder { get { return 0; } }
+
+            public void OnProcessScene(UnityEngine.SceneManagement.Scene scene)
+            {
+                CheckValidEventRefs(scene);
+            }
+        }
+#endif
 
         private static bool CompareLists(List<string> tempBanks, List<string> banks)
         {
@@ -894,7 +1003,6 @@ namespace FMODUnity
         {
             if (!Directory.Exists(basePath))
             {
-                removeBanks = false;
                 return;
             }
 
@@ -920,8 +1028,6 @@ namespace FMODUnity
                 string baseFolder = basePath.Replace(Application.dataPath, AssetsFolderName);
                 AssetDatabase.MoveAssetToTrash(baseFolder);
             }
-
-            removeBanks = false;
         }
 
         public static void MoveBanks(string from, string to)

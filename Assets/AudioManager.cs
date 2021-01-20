@@ -102,21 +102,26 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void Play(string name)
+    public Sound Play(string name,Vector3 pos = new Vector3())
     {
+
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
             Dev.LogWarning("Unable To Play " + name);
-            return;
+            return null;
         }
-        if(s.oneShot)
+        Dev.Log(s.soundEvent);
+        if (s.oneShot)
         {
-            FMODUnity.RuntimeManager.PlayOneShot(s.soundEvent);
-        }else
+            FMODUnity.RuntimeManager.PlayOneShot(s.soundEvent, pos);
+            return null;
+        }
+        else
         {
             s.ins = FMODUnity.RuntimeManager.CreateInstance(s.soundEvent);
             s.ins.start();
+            return s;
         }
         
     }

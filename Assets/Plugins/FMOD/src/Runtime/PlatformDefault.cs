@@ -20,7 +20,7 @@ namespace FMODUnity
 #if UNITY_EDITOR
         public override Legacy.Platform LegacyIdentifier { get { return Legacy.Platform.Default; } }
 
-        protected override IEnumerable<string> GetRelativeBinaryPaths(BuildTarget buildTarget, string suffix)
+        protected override IEnumerable<string> GetRelativeBinaryPaths(BuildTarget buildTarget, bool allVariants, string suffix)
         {
             yield break;
         }

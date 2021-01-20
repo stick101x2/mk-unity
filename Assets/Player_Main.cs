@@ -21,7 +21,23 @@ public class Player_Main : MonoBehaviour
     public float speedModifier = 1;
     public float maxSpeed = 100;
 
-   
+    public void KartJump()
+    {
+        c_kart.anim.Play("Jump", 0, 0);
+    }
+    public void DriverTurn(float x, bool drift)
+    {
+        driver_a.anim.SetBool("Drifting", drift);
+       
+        if (Mathf.Abs( x )> 0)
+        {
+            driver_a.anim.SetFloat("TurnX", x);
+            driver_a.anim.SetBool("Turning", true);
+        }else
+        {
+            driver_a.anim.SetBool("Turning", false);
+        }
+    }
 
     public void GetFinalStats()
     {
@@ -51,7 +67,7 @@ public class Player_Main : MonoBehaviour
         //float p_drift
 
     }
-
+    
     public void WheelsSteer(float dir)
     {
         Vector3 fw = c_kart.front_wheel_left.localEulerAngles;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{f0fdab25-13fc-49f0-9212-d03b2cf6bcc5}">
+		<property name="name">
+			<value>engine_idle</value>
+		</property>
+		<relationship name="folder">
+			<destination>{01bb278e-8f69-409b-947a-be1358957abe}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7c9dce64-785a-4830-9613-2957bc20b7e9}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7c9dce64-785a-4830-9613-2957bc20b7e9}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

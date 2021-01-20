@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{d52280cf-8d62-4d4b-ac03-764c88493b9f}">
-		<property name="note" />
 		<property name="assetPath">
-			<value>track_baby.wav</value>
+			<value>Music/track_baby.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

@@ -17,7 +17,32 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: luigi_eye_l_tx
+    second: {fileID: 2100000, guid: c76e9f85c10238549bd156d88e238c67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: luigi_eye_r_tx
+    second: {fileID: 2100000, guid: bc7aaf4918422ed46a6e7b9901ddace6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: luigi_eye_tx
+    second: {fileID: 2100000, guid: 0c835f573da76e247b4e23a37a217a93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: luigi_eyeball_l_tx
+    second: {fileID: 2100000, guid: 4241f182de9c89847a1e990205d3dee2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: luigi_eyeball_r_tx
+    second: {fileID: 2100000, guid: ca4eb95b010de4e458b431f8ebe61438, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: luigi_mouth_tx
     second: {fileID: 2100000, guid: 0c835f573da76e247b4e23a37a217a93, type: 2}
   materials:
     materialImportMode: 1

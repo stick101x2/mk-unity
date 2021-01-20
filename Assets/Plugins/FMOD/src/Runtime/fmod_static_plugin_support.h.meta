@@ -18,7 +18,7 @@ PluginImporter:
         Exclude Linux: 1
         Exclude Linux64: 1
         Exclude LinuxUniversal: 1
-        Exclude OSXUniversal: 1
+        Exclude OSXUniversal: 0
         Exclude PS4: 1
         Exclude Switch: 1
         Exclude WebGL: 1
@@ -80,7 +80,7 @@ PluginImporter:
   - first:
       Standalone: OSXUniversal
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
   - first:

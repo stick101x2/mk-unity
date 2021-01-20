@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{a58eda3c-0737-4678-8e68-8b0e8a82b969}">
+		<property name="assetPath">
+			<value>SFX/Race/Engine/engine 2 driving.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>16</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.35068749999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8d0f46d7-9d66-4cbe-b957-14103cfd7dc1}</destination>
+		</relationship>
+	</object>
+</objects>

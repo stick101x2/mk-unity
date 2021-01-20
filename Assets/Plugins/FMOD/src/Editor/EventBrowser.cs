@@ -237,7 +237,7 @@ namespace FMODUnity
 
                 if ((TypeFilter & TypeFilter.Bank) != 0)
                 {
-                    CreateSubTree("Banks", BankPrefix, EventManager.Banks, b => BankPrefix + b.Name, bankIcon);
+                    CreateSubTree("Banks", BankPrefix, EventManager.Banks, b => b.StudioPath, bankIcon);
                 }
 
                 if ((TypeFilter & TypeFilter.Parameter) != 0)

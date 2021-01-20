@@ -19,7 +19,7 @@ namespace FMOD
     */
     public partial class VERSION
     {
-        public const int    number = 0x00020105;
+        public const int    number = 0x00020107;
 #if !UNITY_2017_4_OR_NEWER
         public const string dll    = "fmod";
 #endif
@@ -496,6 +496,8 @@ namespace FMOD
         PREUPDATE              = 0x00000400,
         POSTUPDATE             = 0x00000800,
         RECORDLISTCHANGED      = 0x00001000,
+        BUFFEREDNOMIX          = 0x00002000,
+        DEVICEREINITIALIZE     = 0x00004000,
         ALL                    = 0xFFFFFFFF,
     }
 
@@ -793,13 +795,13 @@ namespace FMOD
     }
 
     [Flags]
-    public enum THREAD_AFFINITY : ulong
+    public enum THREAD_AFFINITY : long // avoid ulong for Bolt compatibility
     {
         /* Platform agnostic thread groupings */
-        GROUP_DEFAULT       = 0x8000000000000000,
-        GROUP_A             = 0x8000000000000001,
-        GROUP_B             = 0x8000000000000002,
-        GROUP_C             = 0x8000000000000003,
+        GROUP_DEFAULT       = 0x4000000000000000,
+        GROUP_A             = 0x4000000000000001,
+        GROUP_B             = 0x4000000000000002,
+        GROUP_C             = 0x4000000000000003,
         
         /* Thread defaults */
         MIXER               = GROUP_A,
@@ -816,7 +818,7 @@ namespace FMOD
         CONVOLUTION1        = GROUP_C,
         CONVOLUTION2        = GROUP_C,
                 
-        /* Core mask, valid up to 1 << 62 */
+        /* Core mask, valid up to 1 << 61 */
         CORE_ALL            = 0,
         CORE_0              = 1 << 0,
         CORE_1              = 1 << 1,
@@ -917,6 +919,11 @@ namespace FMOD
     {
         public static RESULT SetAttributes(THREAD_TYPE type, THREAD_AFFINITY affinity = THREAD_AFFINITY.GROUP_DEFAULT, THREAD_PRIORITY priority = THREAD_PRIORITY.DEFAULT, THREAD_STACK_SIZE stacksize = THREAD_STACK_SIZE.DEFAULT)
         {
+            if ((affinity & THREAD_AFFINITY.GROUP_DEFAULT) != 0)
+            {
+                affinity &= ~THREAD_AFFINITY.GROUP_DEFAULT;
+                affinity = (THREAD_AFFINITY)(((ulong)affinity) | 0x8000000000000000);
+            }
             return FMOD5_Thread_SetAttributes(type, affinity, priority, stacksize);
         }
 

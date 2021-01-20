@@ -6,6 +6,8 @@ public class Driver : MonoBehaviour
 {
     public DriverSettings data;
 
+    public Animator anim;
+
 }
 
 

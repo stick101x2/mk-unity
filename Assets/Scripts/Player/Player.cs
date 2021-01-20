@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IStateControlled
+public class Player : Entity, IStateControlled
 {
     //common
     public Player_Main main;
     public Player_Input input;
-    public Rigidbody rid;
     public Player_Variables var;
+    public PlayerController controller;
 
     private StateMachine state = new StateMachine();
     public List<IPlayer> p_setup = new List<IPlayer>();
-
 
     void Awake()
     {
         rid = GetComponent<Rigidbody>(); //gets rigidbody componet
         input = GetComponent<Player_Input>(); //gets input componet
         var = GetComponent<Player_Variables>();
+        controller = GetComponent<PlayerController>();
         main = GetComponentInChildren<Player_Main>();
         
         main.GetFinalStats();

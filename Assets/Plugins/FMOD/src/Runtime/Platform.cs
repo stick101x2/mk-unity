@@ -122,35 +122,72 @@ namespace FMODUnity
 
 #if UNITY_EDITOR
         [Flags]
-        public enum BuildType
+        public enum BinaryType
         {
             Release = 1,
-            Development = 2,
-            All = Release | Development,
+            Logging = 2,
+            Optional = 4,
+            AllVariants = 8,
+            All = Release | Logging | Optional | AllVariants
         }
 
-        public virtual IEnumerable<string> GetBinaryPaths(BuildTarget buildTarget, BuildType buildType)
+        protected virtual IEnumerable<string> GetBinaryPaths(BuildTarget buildTarget, BinaryType binaryType, string prefix)
         {
-            string pluginBasePath = GetEditorPluginBasePath();
+            string assetBasePath = GetBinaryAssetBasePath();
+            bool allVariants = (binaryType & BinaryType.AllVariants) == BinaryType.AllVariants;
 
-            if ((buildType & BuildType.Release) == BuildType.Release)
+            if ((binaryType & BinaryType.Release) == BinaryType.Release)
             {
-                foreach (string path in GetRelativeBinaryPaths(buildTarget, ""))
+                foreach (string path in GetRelativeBinaryPaths(buildTarget, allVariants, ""))
                 {
-                    yield return string.Format("{0}/{1}", pluginBasePath, path);
+                    yield return string.Format("{0}/{1}/{2}", prefix, assetBasePath, path);
                 }
             }
 
-            if ((buildType & BuildType.Development) == BuildType.Development)
+            if ((binaryType & BinaryType.Logging) == BinaryType.Logging)
             {
-                foreach (string path in GetRelativeBinaryPaths(buildTarget, "L"))
+                foreach (string path in GetRelativeBinaryPaths(buildTarget, allVariants, "L"))
                 {
-                    yield return string.Format("{0}/{1}", pluginBasePath, path);
+                    yield return string.Format("{0}/{1}/{2}", prefix, assetBasePath, path);
+                }
+            }
+
+            if ((binaryType & BinaryType.Optional) == BinaryType.Optional)
+            {
+                foreach (string path in GetRelativeOptionalBinaryPaths(buildTarget, allVariants))
+                {
+                    yield return string.Format("{0}/{1}/{2}", prefix, assetBasePath, path);
                 }
             }
         }
 
-        protected abstract IEnumerable<string> GetRelativeBinaryPaths(BuildTarget buildTarget, string suffix);
+        // Called by Settings.CanBuildTarget to get the required binaries for the current
+        // build target and logging state.
+        public virtual IEnumerable<string> GetBinaryFilePaths(BuildTarget buildTarget, BinaryType binaryType)
+        {
+            return GetBinaryPaths(buildTarget, binaryType, Application.dataPath);
+        }
+
+        // Called by Settings.SelectBinaries to get:
+        // * The required and optional binaries for the current build target and logging state;
+        //   these get enabled.
+        // * All binaries; any that weren't enabled in the previous step get disabled.
+        public virtual IEnumerable<string> GetBinaryAssetPaths(BuildTarget buildTarget, BinaryType binaryType)
+        {
+            return GetBinaryPaths(buildTarget, binaryType, "Assets");
+        }
+
+        protected virtual string GetBinaryAssetBasePath()
+        {
+            return "Plugins/FMOD/lib";
+        }
+
+        protected abstract IEnumerable<string> GetRelativeBinaryPaths(BuildTarget buildTarget, bool allVariants, string suffix);
+
+        protected virtual IEnumerable<string> GetRelativeOptionalBinaryPaths(BuildTarget buildTarget, bool allVariants)
+        {
+            yield break;
+        }
 
         public virtual bool IsFMODStaticallyLinked { get { return false; } }
 
@@ -472,6 +509,7 @@ namespace FMODUnity
         public class PropertyStorage
         {
             public PropertyBool LiveUpdate = new PropertyBool();
+            public PropertyInt LiveUpdatePort = new PropertyInt();
             public PropertyBool Overlay = new PropertyBool();
             public PropertyBool Logging = new PropertyBool();
             public PropertyInt SampleRate = new PropertyInt();
@@ -500,6 +538,7 @@ namespace FMODUnity
                 return active &&
                     (
                         Properties.LiveUpdate.HasValue
+                        || Properties.LiveUpdatePort.HasValue
                         || Properties.Overlay.HasValue
                         || Properties.Logging.HasValue
                         || Properties.SampleRate.HasValue
@@ -520,6 +559,7 @@ namespace FMODUnity
 
         // These accessors provide (possibly inherited) property values.
         public TriStateBool LiveUpdate { get { return PropertyAccessors.LiveUpdate.Get(this); } }
+        public int LiveUpdatePort { get { return PropertyAccessors.LiveUpdatePort.Get(this); } }
         public TriStateBool Overlay { get { return PropertyAccessors.Overlay.Get(this); } }
         public TriStateBool Logging { get { return PropertyAccessors.Logging.Get(this); } }
         public int SampleRate { get { return PropertyAccessors.SampleRate.Get(this); } }
@@ -538,6 +578,9 @@ namespace FMODUnity
         {
             public static readonly PropertyAccessor<TriStateBool> LiveUpdate
                     = new PropertyAccessor<TriStateBool>(properties => properties.LiveUpdate, TriStateBool.Disabled);
+
+            public static readonly PropertyAccessor<int> LiveUpdatePort
+                    = new PropertyAccessor<int>(properties => properties.LiveUpdatePort, 9264);
 
             public static readonly PropertyAccessor<TriStateBool> Overlay
                     = new PropertyAccessor<TriStateBool>(properties => properties.Overlay, TriStateBool.Disabled);
@@ -649,6 +692,39 @@ namespace FMODUnity
         }
 
         public abstract OutputType[] ValidOutputTypes { get; }
+
+        public virtual int CoreCount { get { return 0; } }
+
+        public const int MaximumCoreCount = 16;
 #endif
+
+        public virtual List<ThreadAffinityGroup> DefaultThreadAffinities { get { return StaticThreadAffinities; } }
+
+        private static List<ThreadAffinityGroup> StaticThreadAffinities = new List<ThreadAffinityGroup>();
+
+        [Serializable]
+        public class PropertyThreadAffinityList : Property<List<ThreadAffinityGroup>>
+        {
+        }
+
+        [SerializeField]
+        private PropertyThreadAffinityList threadAffinities = new PropertyThreadAffinityList();
+
+        public IEnumerable<ThreadAffinityGroup> ThreadAffinities
+        {
+            get
+            {
+                if (threadAffinities.HasValue)
+                {
+                    return threadAffinities.Value;
+                }
+                else
+                {
+                    return DefaultThreadAffinities;
+                }
+            }
+        }
+
+        public PropertyThreadAffinityList ThreadAffinitiesProperty { get { return threadAffinities; } }
     }
 }

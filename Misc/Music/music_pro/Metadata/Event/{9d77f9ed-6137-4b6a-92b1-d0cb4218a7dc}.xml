@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{9d77f9ed-6137-4b6a-92b1-d0cb4218a7dc}">
-		<property name="note" />
 		<property name="name">
 			<value>track_baby</value>
 		</property>
@@ -54,10 +53,14 @@
 			<destination>{e1f558c8-f3b3-44b2-b3a5-fa05bc19c8fb}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{9a6b25c6-7747-4ac4-8fba-6edf6df81e9f}</destination>
+			<destination>{56938085-d67e-4c88-8dc3-61a03cdad8c8}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{c62555e8-b2d2-4803-8a58-fadc28d94f97}" />
+	<object class="EventAutomatableProperties" id="{c62555e8-b2d2-4803-8a58-fadc28d94f97}">
+		<property name="priority">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{ce56fbe7-a98f-486c-9a63-d11c4be53824}" />
 	<object class="GroupTrack" id="{257a75ed-1e12-4731-a4d0-02c1aab38bcd}">
 		<relationship name="modules">
@@ -101,9 +104,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{874e3293-289d-42da-b126-bf9b2993eb07}">
-		<property name="volume">
-			<value>10</value>
-		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
